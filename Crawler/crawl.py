@@ -55,7 +55,7 @@ class Crawl(object):
                 elif key == "so":
                     result[key] += self.parse_so_com_search(response.content)
 
-        return result
+        return self.data_converter(dict(result))
 
     # google search
     def parse_google_search(self, html_doc):
@@ -105,6 +105,20 @@ class Crawl(object):
 
         return data
 
+    def data_converter(self, data):
+        result_list = []
+
+        for key, val in data.items():
+            for data in val:
+                item = []
+                item.append(data['title'])
+                item.append(data['url'])
+                item.append(key)
+                result_list.append(item)
+
+        return {"data": result_list}
+
 if __name__ == '__main__':
     crawl = Crawl()
     print(crawl.crawl('虎扑'))
+    
