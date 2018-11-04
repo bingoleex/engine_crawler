@@ -17,14 +17,6 @@ def get_result():
 @application.route('/')
 def show_entries():
     return render_template('index.html')
-
-
+    
 if __name__ == '__main__':
-    with open('360.txt', 'r', encoding='utf-8') as f:
-        # with open('resss.html', 'r', encoding='utf-8') as f:
-        # logger.info(parse_google_html(f))
-        parse_so_com_html(f)
-
-# logger.info(requests.head('http://www.baidu.com/link?url=9jAA6m4WmL6oNBz5Hx-L8bq39QbfS1ZPmDdXvqiNFAu').headers['location'])
-# crawl('hello')
-# application.run(host='0.0.0.0')
+    application.run(debug=True)
